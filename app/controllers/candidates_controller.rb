@@ -31,6 +31,12 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def destroy
+    @candidate = Candidate.find_by(id: params[:id])
+    @candidate.destroy if @candidate
+    redirect_to candidates_path, notice: "delete candidate successfully"
+  end
+
   private
   def candidate_params
     params.require(:candidate).permit(:age, :name, :politics, :party)
