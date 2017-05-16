@@ -39,8 +39,7 @@ class CandidatesController < ApplicationController
 
   def vote
     @candidate = Candidate.find_by(id: params[:id])
-    @candidate.increment(:votes)
-    @candidate.save
+    @candidate.vote_logs.create(ip_address: request.remote_ip) if @candidate
     #    render :index 
     # it doesn't work because there's no candids variable here, error appear when render index.html.erb
     redirect_to candidates_path, notice: "vote successfully"

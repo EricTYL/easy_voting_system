@@ -20,7 +20,7 @@
 		<td><%= candidate.name %>(age: <%= candidate.age %>)</td>
 		<td><%= candidate.party %></td>
 		<td><%= candidate.politics %></td>
-		<td><%= candidate.votes %></td>
+		<td><%= candidate.vote_logs.size%></td>
 		<td>
 		    <%= link_to "edit", edit_candidate_path(candidate) %>
 		    <%= link_to "delete",candidate_path(candidate), method: "delete", data: {confirm: "confirm deletion"} %>
