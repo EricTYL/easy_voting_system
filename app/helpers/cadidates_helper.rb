@@ -1,0 +1,2 @@
+module CadidatesHelper
+end
