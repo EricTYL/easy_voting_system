@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :cadidates
+  resources :candidates
 
 end
