@@ -17,6 +17,20 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def edit
+    @candidate = Candidate.find_by(id: params[:id])
+  end
+
+  def update
+    @candidate = Candidate.find_by(id: params[:id])
+
+    if @candidate.update(candidate_params)
+      redirect_to candidates_path, notice: "edit candidate successfully"
+    else
+      render :edit
+    end
+  end
+
   private
   def candidate_params
     params.require(:candidate).permit(:age, :name, :politics, :party)
