@@ -16,7 +16,7 @@
     <tbody>
 	<% @candids.each do |candidate| %>
 	    <tr>
-		<td><%= link_to "vote this one", "#" %></td>
+		<td><%= link_to "vote this one", vote_candidate_path(candidate), method: "post", data: {confirm: "vote this one"} %></td>
 		<td><%= candidate.name %>(age: <%= candidate.age %>)</td>
 		<td><%= candidate.party %></td>
 		<td><%= candidate.politics %></td>

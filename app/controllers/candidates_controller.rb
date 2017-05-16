@@ -37,6 +37,15 @@ class CandidatesController < ApplicationController
     redirect_to candidates_path, notice: "delete candidate successfully"
   end
 
+  def vote
+    @candidate = Candidate.find_by(id: params[:id])
+    @candidate.increment(:votes)
+    @candidate.save
+    #    render :index 
+    # it doesn't work because there's no candids variable here, error appear when render index.html.erb
+    redirect_to candidates_path, notice: "vote successfully"
+  end
+
   private
   def candidate_params
     params.require(:candidate).permit(:age, :name, :politics, :party)
