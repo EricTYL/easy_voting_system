@@ -1,0 +1,24 @@
+<h1>Candidates List</h1>
+
+<%= link_to "add new candidate", new_candidate_path %>
+
+<table>
+    <thead>
+	<tr>
+	    <td>name</td>
+	    <td>party</td>
+	    <td>politics</td>
+	    <td>votes</td>
+	</tr>
+    </thead>
+    <tbody>
+	<% @candids.each do |candidate| %>
+	    <tr>
+		<td><%= candidate.name %>(age: <%= candidate.age %>)</td>
+		<td><%= candidate.party %></td>
+		<td><%= candidate.politics %></td>
+		<td><%= candidate.votes %></td>
+	    </tr>
+	<% end %>
+    </tbody>
+</table>
