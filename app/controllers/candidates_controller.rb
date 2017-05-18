@@ -54,7 +54,14 @@ class CandidatesController < ApplicationController
   end
 
   def find_candidate
-    @candidate = Candidate.find_by(id: params[:id])
+    begin
+      # use find rather than find_by
+      # because exception message is better than only nil
+      @candidate = Candidate.find(params[:id])
+    rescue
+      # rescue when exception appear
+      redirect_to candidates_path, notice: "There's no such a candidate"
+    end
   end
 
   def ip_is_unique(ip)
